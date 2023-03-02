@@ -1,0 +1,27 @@
+{
+  "name": "library",
+  "version": "1.0.0",
+  "description": "library management system thwt helps to manage books and users",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mugisha636/Library.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mugisha636/Library/issues"
+  },
+  "homepage": "https://github.com/mugisha636/Library#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^7.0.0",
+    "nodemon": "^2.0.20"
+  }
+}
