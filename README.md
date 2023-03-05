@@ -6,12 +6,10 @@ before you run this project
 2.create file and named as .env and
 
      2.1 connect your database 
-     
-     DB_CONNECT=
+     ```DB_CONNECT=```
 
      2.2 create your secret key used in encryption end decryption
-     
-     SECRET_KEY=
+     ```SECRET_KEY=```
 
 
 
