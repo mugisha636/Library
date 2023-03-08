@@ -4,7 +4,8 @@
   "description": "library management system thwt helps to manage books and users",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon node app.js"
+    "dev": "nodemon app.js",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
