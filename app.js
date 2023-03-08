@@ -3,6 +3,7 @@ const app=express()
 const bodyParser=require('body-parser')
 const mongoose=require('mongoose')
 require('dotenv/config');
+const Database=require('./database/db')
 
 
 
@@ -18,17 +19,12 @@ app.use(bookRoute)
 
 
 
-
-
-if(mongoose.connect(process.env.DB_CONNECT)){
-    console.log('database connected');
-}
-
-else{
-    console.log('database error');
-}
-
-
-app.listen(8080,()=>{
-    console.log('running on 8000');
+const PORT = process.env.PORT ||4000;
+Database.connectDB().then(() => {
+  app.listen(PORT, () => {
+      console.log("listening for requests");
+  })
 })
+
+
+
