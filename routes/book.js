@@ -14,6 +14,9 @@ book.delete('/delete/:bookId',regBook.deleteBook)
 
 
 
+// rending book
 
+
+book.post('/rend',regBook.registerRender)
 
 module.exports= book

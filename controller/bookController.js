@@ -1,4 +1,7 @@
 const bookModel=require('../models/bookModel')
+const rendBook=require('../models/renderModel')
+const mongoose=require('mongoose')
+const renderModel = require('../models/renderModel')
 
 // get users
 
@@ -33,10 +36,13 @@ const registerBook = async (req, res) => {
   
   
       const newBook = new bookModel({
-        name: data.username,
+         book_id:new mongoose.Types.ObjectId(),
+        name: data.name,
         author: data.author,
-        publishedYear: data.publishedYear
+        publishedYear: data.publishedYear,
+       owner:req.body.owner
        
+      
       });
   
       await newBook.save();
@@ -79,4 +85,47 @@ const deleteBook=async(req,res)=>{
      }
 
 
-  module.exports = {registerBook,getBooks,oneBook,deleteBook}
+
+
+   //  =================== render book controller==============
+
+
+   // rendder register
+const registerRender = async (req, res) => {
+   try {
+      const data = req.body
+     const rendered = await renderModel.findOne({
+       $or: [{render: data.render },{book: data.book }]
+     }).exec();
+ 
+     if (rendered) {
+       return res.status(409).json({ message: 'book taken' });
+     }
+ 
+ 
+     const newRender = new renderModel({
+      render_id:new mongoose.Types.ObjectId(),
+        render:req.body.render,
+        book: data.book,
+        renderedTime: data.renderedTime,
+        TimeToBorrow: data.TimeToBorrow,
+      
+      
+     
+     });
+ 
+     await newRender.save();
+ 
+     return res.status(201).json({ message: 'take book' });
+   } catch (error) {
+     console.error(error);
+     return res.status(500).json({ error:error });
+   }
+ };
+
+
+
+
+   //  ======================== end render======================
+
+  module.exports = {registerBook,getBooks,oneBook,deleteBook,registerRender}
