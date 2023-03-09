@@ -11,10 +11,12 @@ const Database=require('./database/db')
 const bookRoute=require('./routes/book')
 const registerRout=require('./routes/register');
 
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(registerRout)
 app.use(bookRoute)
+
 
 
 

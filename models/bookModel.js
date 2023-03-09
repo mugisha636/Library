@@ -1,5 +1,9 @@
+const { number } = require('joi');
 const mongoose=require('mongoose');
 var bookSchema = new mongoose.Schema({
+   book_id:{
+    type:mongoose.Schema.Types.ObjectId
+   },
     name: {
      type: String,
      allowNull:false
@@ -8,11 +12,16 @@ var bookSchema = new mongoose.Schema({
       type: String
        
     },
+    owner:{type:mongoose.Schema.Types.ObjectId,ref:'User', required:true},
+    
+    
     publishedYear: {
       type:String,
       allowNull:false
-    }
+    },
+    
   }, 
+  
 
   
   

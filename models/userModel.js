@@ -1,5 +1,8 @@
 const mongoose=require('mongoose');
 var UserSchema = new mongoose.Schema({
+  user_id:{
+    type:mongoose.Schema.Types.ObjectId
+   },
     username: {
      type: String,
      allowNull:false

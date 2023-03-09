@@ -2,7 +2,8 @@ const modelUser = require('../models/userModel')
 // const joi=require('joi')
 const bcrypt = require('bcrypt');
 const { post } = require('../routes/register');
-const jwt=require('jsonwebtoken')
+const jwt=require('jsonwebtoken');
+const { default: mongoose } = require('mongoose');
 require('dotenv/config')
 
 // get users
@@ -41,6 +42,7 @@ const registerUser = async (req, res) => {
      const hashedPassword = await bcrypt.hash(data.password, 10);
  
      const newUser = new modelUser({
+      user_id:new mongoose.Types.ObjectId(),
        username: data.username,
        email: data.email,
        status: data.status,
